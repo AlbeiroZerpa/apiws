@@ -1,7 +1,7 @@
 const verificar=(req,res)=>{
 
     try {
-        var tokenalbecode = "albecodenodejsapimeta";
+        var tokenalbecode = "ALBECODENODEJSAPIMETA";
         var token = req.query["hub.verify_token"];
         var challenge = req.query["hub.challenge"];
 
