@@ -17,6 +17,8 @@ const verificar=(req,res)=>{
 const recibir=(req,res)=>{
     try {
         var entry = (req.body["entry"])[0];
+        var changes = (entry["changes"])[0];
+        console.log(changes);
         console.log(entry);
     }catch(e){
         console.log(e);
