@@ -1,3 +1,6 @@
+const fs = require('fs');
+const myConsole = new console.Console(fs.createWriteStream('./logsgtp.txt'))
+
 const verificar=(req,res)=>{
 
     try {
@@ -11,6 +14,7 @@ const verificar=(req,res)=>{
             res.status(400).send();
         }
     }catch(e){
+        myConsole.log(e);
         res.status(400).send();
     }
 }
