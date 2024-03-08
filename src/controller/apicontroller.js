@@ -33,17 +33,12 @@ const recibir = (req, res) => {
       var texto = messages["text"]["body"];
       var number = messages["from"];
 
-      myConsole.log("Mensaje: " + texto);
-      myConsole.log("Enviado desde :" + number);
       enviarmensaje.EnviarMensajeWhatsapp(texto, number);
     } else {
     }
 
-    myConsole.log(objetoMensaje);
-
     res.send("EVENT_RECEIVED");
   } catch (e) {
-    myConsole.log(e);
     res.send("EVENT_RECEIVED");
   }
 };
