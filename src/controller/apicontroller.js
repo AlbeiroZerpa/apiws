@@ -35,7 +35,7 @@ const recibir=(req,res)=>{
 
         myConsole.log("Enviado desde :"+ number);
         myConsole.log("Mensaje: "+ texto);
-        enviarmensaje.EnviarMensajeWhatsapp(number, texto);
+        enviarmensaje.EnviarMensajeWhatsapp(texto, number);
         
         res.send("EVENT_RECEIVED");   
     }catch(e){
