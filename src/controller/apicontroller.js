@@ -1,6 +1,9 @@
 const fs = require('fs');
 const myConsole = new console.Console(fs.createWriteStream('./logsgtp.txt'))
 
+const enviarmensaje = require("../service/apiservice");
+
+
 const verificar=(req,res)=>{
 
     try {
@@ -13,6 +16,7 @@ const verificar=(req,res)=>{
         }else{
             res.status(400).send();
         }
+        myConsole.log(res);
     }catch(e){
         myConsole.log(e);
         res.status(400).send();
@@ -22,10 +26,20 @@ const recibir=(req,res)=>{
     try {
         var entry = (req.body["entry"])[0];
         var changes = (entry["changes"])[0];
-        console.log(changes);
-        console.log(entry);
+        var value = changes["value"];
+        var objetoMensaje = value["messages"];
+
+        var messages = objetoMensaje[0];
+        var number = messages["from"];
+        var texto = messages["text"]["body"];
+
+        myConsole.log("Enviado desde :"+ number);
+        myConsole.log("Mensaje: "+ texto);
+        enviarmensaje.EnviarMensajeWhatsapp(number, texto);
+        
+        res.send("EVENT_RECEIVED");   
     }catch(e){
-        console.log(e);
+        myConsole.log(e);
         res.send("EVENT_RECEIVED");        
     }
 }
