@@ -83,7 +83,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      prompt: parts[1],
+      messages: [{ role: "user", content: text }],
       temperature: 0.5,
       max_tokens: 100,
       top_p: 1,
