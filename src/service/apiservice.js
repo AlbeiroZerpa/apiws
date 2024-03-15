@@ -1,9 +1,10 @@
 const https = require("https");
-const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({
+
+import OpenAI from 'openai';
+const openai = new OpenAI({
   apiKey: "sk-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",
 });
-const openai = new OpenAIApi(configuration);
+
 
 async function EnviarMensajeWhatsapp(texto, number) {
   texto = texto.toLowerCase();
@@ -78,8 +79,8 @@ async function EnviarMensajeWhatsapp(texto, number) {
     let parts = texto.split("gchatgpt: ");
     console.log(parts[1]);
 
-    const response = await openai.createCompletion({
-      model: "text-davinci-002",
+    const chatCompletion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
       prompt: parts[1],
       temperature: 0.5,
       max_tokens: 100,
@@ -87,7 +88,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
       frequency_penalty: 0.0,
       presence_penalty: 0.0,
     });
-    console.log(response.data.choices[0].text);
+    console.log(chatCompletion.choices[0].message);
 
 
     var data = JSON.stringify({
