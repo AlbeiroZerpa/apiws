@@ -1,9 +1,7 @@
 const https = require("https");
 
-import OpenAI from 'openai';
-const openai = new OpenAI({
-  apiKey: "sk-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",
-});
+const OpenAI = require("openai");
+
 
 
 async function EnviarMensajeWhatsapp(texto, number) {
@@ -79,7 +77,11 @@ async function EnviarMensajeWhatsapp(texto, number) {
     let parts = texto.split("gchatgpt: ");
     console.log(parts[1]);
 
-    const chatCompletion = await openai.chat.completions.create({
+    const openai = new OpenAI({
+      apiKey: "sk-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",
+    });
+
+    const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       prompt: parts[1],
       temperature: 0.5,
