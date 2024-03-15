@@ -82,12 +82,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user"}],
-      temperature: 0.5,
-      max_tokens: 100,
-      top_p: 1,
-      frequency_penalty: 0.0,
-      presence_penalty: 0.0,
+      messages: [{ role: "user", content: text }],
     });
     console.log(chatCompletion.choices[0].message);
 
@@ -99,7 +94,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
       type: "text",
       text: {
         preview_url: false,
-        body: response.data.choices[0].text,
+        body: (response.choices[0]['message']).content,
       },
     });
   } else {
