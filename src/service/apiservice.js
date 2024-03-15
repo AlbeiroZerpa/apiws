@@ -1,6 +1,6 @@
 const https = require("https");
 
-const OpenAI = require("openai");
+import OpenAI from 'openai' ;
 
 
 
