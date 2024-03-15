@@ -59,7 +59,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
         body: "Escribele ahi a Albeiro 0424 4093 591",
       },
     });
-  } else if (texto == 0) {
+  } else if (texto == 5) {
     var data = JSON.stringify({
       messaging_product: "whatsapp",
       recipient_type: "individual",
@@ -104,7 +104,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
       type: "text",
       text: {
         preview_url: false,
-        body: "Te habla Albeiro, porfavor, presiona unos de estos numeros para opciones.\n\n1.Pedir imagen 📷\n2.Solicitar PDF📕\n3.Direccion📍\n4.Hablar con un humano🤫🧏\n5.Consultar a Chatgpt\n0.Regresar al menu",
+        body: "Te habla Albeiro, porfavor, presiona unos de estos numeros para opciones.\n\n1.Pedir imagen 📷\n2.Solicitar PDF📕\n3.Direccion📍\n4.Hablar con un humano🤫🧏\n5.Consultar a Chatgpt",
       },
     });
   }
