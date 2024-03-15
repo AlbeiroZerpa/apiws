@@ -82,7 +82,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: text }],
+      messages: [{ role: "user"}],
     });
     console.log(chatCompletion.choices[0].message);
 
