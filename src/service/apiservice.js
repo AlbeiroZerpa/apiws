@@ -77,7 +77,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
     console.log(parts[1]);
 
     const openai = new OpenAI({
-      apiKey: "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",
+      apiKey: "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",
     });
 
     const response = await openai.chat.completions.create({
