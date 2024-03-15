@@ -1,5 +1,9 @@
 const https = require("https");
 const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({
+  apiKey: "sk-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",
+});
+const openai = new OpenAIApi(configuration);
 
 async function EnviarMensajeWhatsapp(texto, number) {
   texto = texto.toLowerCase();
