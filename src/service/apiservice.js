@@ -78,6 +78,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
 
     const openai = new OpenAI({
       apiKey: "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",
+      messages: [{ role: "user", content: text }],
     });
 
     const response = await openai.chat.completions.create({
