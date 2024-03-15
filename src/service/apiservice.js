@@ -1,6 +1,7 @@
 const https = require("https");
+const { Configuration, OpenAIApi } = require("openai");
 
-function EnviarMensajeWhatsapp(texto, number) {
+async function EnviarMensajeWhatsapp(texto, number) {
   texto = texto.toLowerCase();
   if (texto.includes("hola")) {
     var data = JSON.stringify({
@@ -20,7 +21,7 @@ function EnviarMensajeWhatsapp(texto, number) {
       to: number,
       type: "image",
       image: {
-        link: "https://gameranx.com/wp-content/uploads/2023/06/QqN2wJZhHon6xqzikdtWME.jpg",
+        link: "https://upload.wikimedia.org/wikipedia/commons/4/43/Cute_dog.jpg",
       },
     });
   } else if (texto == 2) {
@@ -58,6 +59,43 @@ function EnviarMensajeWhatsapp(texto, number) {
         body: "Escribele ahi a Albeiro 0424 4093 591",
       },
     });
+  } else if (texto == 0) {
+    var data = JSON.stringify({
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: number,
+      type: "text",
+      text: {
+        preview_url: false,
+        body: "Para consultar Chatgpt usar 'gchatgpt: <Ingrese consulta>'.",
+      },
+    });
+  } else if (texto.includes("gchatgpt:")) {
+    let parts = texto.split("gchatgpt: ");
+    console.log(parts[1]);
+
+    const response = await openai.createCompletion({
+      model: "text-davinci-002",
+      prompt: parts[1],
+      temperature: 0.5,
+      max_tokens: 100,
+      top_p: 1,
+      frequency_penalty: 0.0,
+      presence_penalty: 0.0,
+    });
+    console.log(response.data.choices[0].text);
+
+
+    var data = JSON.stringify({
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to: number,
+      type: "text",
+      text: {
+        preview_url: false,
+        body: response.data.choices[0].text,
+      },
+    });
   } else {
     var data = JSON.stringify({
       messaging_product: "whatsapp",
@@ -66,7 +104,7 @@ function EnviarMensajeWhatsapp(texto, number) {
       type: "text",
       text: {
         preview_url: false,
-        body: "Te habla Albeiro, porfavor, presiona unos de estos numeros para opciones.\n\n1.Pedir imagen de Yae Miko pq si📷\n2.Solicitar PDF📕\n3.Direccion📍\n4.Hablar con un humano🤫🧏",
+        body: "Te habla Albeiro, porfavor, presiona unos de estos numeros para opciones.\n\n1.Pedir imagen 📷\n2.Solicitar PDF📕\n3.Direccion📍\n4.Hablar con un humano🤫🧏\n5.Consultar a Chatgpt\n0.Regresar al menu",
       },
     });
   }
@@ -79,7 +117,7 @@ function EnviarMensajeWhatsapp(texto, number) {
     headers: {
       "Content-Type": "application/json",
       Authorization:
-        "Bearer EAAK8iKfjrggBOZBZCfDJyAckRwk2eOxzwj69h6CetAmylOmnwQ7U75xsEokQKtkLBuyoOi5Ny9h08esbAFnG6UwFIRgJGfC3SILB3qELjMBKXZCzpoRB1SyOWEw9WLScCoOLx0yTAnpnBUCZBMMbsnbiTb3TuQsEK0YqZAjZBvCkXtvV8WLnmBXPLAuMKXjPXiYrZBmCIjp9Qaz7NqooK05SFRi70cVOyu93ZA8ZD",
+        "Bearer EAAK8iKfjrggBOxt01nAVQ7rscsMIdXeqCCAL6lMj496OEkHtXxw9Mhc4owMSHfAVwboEuoThLa9dPOQzsEJojRhetiDmlx4MMl8ZCJZCKI07svCTUpVxclf8W3c66BvmZBcQhzanBN0nS3MiMhvTGIVeuziNUp4AQHS73oKZA90cZCkpIeg3rcpchUGwZCzXLlp9aEVpNen5DyLO10omAzVtsyCZCWrJLKxpuUZD",
     },
   };
 
