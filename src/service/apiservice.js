@@ -1,6 +1,5 @@
 const https = require("https");
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+
 import OpenAI from 'openai' ;
 
 
