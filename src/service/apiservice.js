@@ -117,7 +117,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
     headers: {
       "Content-Type": "application/json",
       Authorization:
-        "Bearer EAAK8iKfjrggBOxnIQToT6SPK4paP6TDm3VGFcszbZATaRNJ4Xs0cFSilfPC0Ola8EYrNxO1JoRK4cRFiL8qYxoqMWhASYTyRDLJrILadDr9q6pw67ZAk7yl8tADfN0DNAZCu4RZBIaN8NVpH8EQtGkS6pdALc9m72eZCs0wMZALOLAQ4Ls1Yg98AFaC8WPkQQnSAJituXQjcXr949q6bzqtZBJ6UEPNkwxRto0ZD",
+        "Bearer EAAK8iKfjrggBOZCr73k4SkS3bxeD29KEOkFPB9ZCnbVo6aOA2ohTgFZAcXA0sCYWlBwK5qUJou3CsQiC7dxws7ZAnAHfgRHw3T3JvBvEiolcFRJV8uZByzGeGz3vGPSSw9uyi4uNVcf6HjZBZAYfhVQ2NqXJD2Y51pVKeNAByzHD12mlNopmZClGZCE0RBLSTu2nVZB9E2EwpBYwFbDj7UV2yHTM5WmkDP8VMbq58ZD",
     },
   };
 
