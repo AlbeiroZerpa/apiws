@@ -1,5 +1,6 @@
 const https = require("https");
 const OpenAI = require("openai");
+const myConsole = new console.Console(fs.createWriteStream("./logsgtp.txt"));
 
 
 
@@ -77,7 +78,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
     console.log(parts[1]);
 
     const openai = new OpenAI({
-      apiKey: "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",
+      apiKey: "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",
     });    
 
     const response = await openai.chat.completions.create({
@@ -85,6 +86,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
       messages: [{ role: "user", content:parts[1]}],
     });
     console.log(chatCompletion.choices[0].message);
+    myConsole.log(chatCompletion.choices[0].message);
 
 
     var data = JSON.stringify({
@@ -118,7 +120,7 @@ async function EnviarMensajeWhatsapp(texto, number) {
     headers: {
       "Content-Type": "application/json",
       Authorization:
-        "Bearer EAAK8iKfjrggBOxt01nAVQ7rscsMIdXeqCCAL6lMj496OEkHtXxw9Mhc4owMSHfAVwboEuoThLa9dPOQzsEJojRhetiDmlx4MMl8ZCJZCKI07svCTUpVxclf8W3c66BvmZBcQhzanBN0nS3MiMhvTGIVeuziNUp4AQHS73oKZA90cZCkpIeg3rcpchUGwZCzXLlp9aEVpNen5DyLO10omAzVtsyCZCWrJLKxpuUZD",
+        "Bearer EAAK8iKfjrggBOzz0sa52pGlPjhLmhYCOGD8BMRyZA7b3TAQryplHwEaYh7uL9muXcRocR7NGrxsPGeRczb6q0XCQcarEIN1xchqXQrI3LO4ZBwhDK3uMZAOCDal71kXml2E6RTkhVIxU0dzJf3zzzxQh3AadAhQZA6rfRaUhMyFll6TYECJXe8HjWWhe5ZB6wVYfW78laNBLm2tQKd7Xipo6IuondkpsJkU0ZD",
     },
   };
 
