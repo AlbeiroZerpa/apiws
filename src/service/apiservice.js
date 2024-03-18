@@ -1,9 +1,5 @@
 const https = require("https");
 const OpenAI = require("openai");
-const fs = require("fs");
-const myConsole = new console.Console(fs.createWriteStream("./logsgtp.txt"));
-
-
 
 async function EnviarMensajeWhatsapp(texto, number) {
   texto = texto.toLowerCase();
